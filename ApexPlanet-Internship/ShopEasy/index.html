@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopEasy | Home</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- 🛒 Navbar -->
+  <header class="navbar">
+    <h1 class="logo">🛒 ShopEasy</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+    </nav>
+  </header>
+
+  <!-- 🛍️ Main Section -->
+  <main class="container">
+    <h2>Our Products</h2>
+
+    <!-- Search & Sort -->
+    <div class="controls">
+      <input type="text" id="search" placeholder="Search products..." />
+      <select id="sort">
+        <option value="none">Sort by</option>
+        <option value="low">Price: Low → High</option>
+        <option value="high">Price: High → Low</option>
+      </select>
+    </div>
+
+    <!-- Product Grid -->
+    <div id="productGrid" class="grid">
+      <!-- Product 1 -->
+      <div class="card">
+        <img src="images/shirt.jpg" alt="Blue Shirt" />
+        <h3>Blue Shirt</h3>
+        <p>₹499</p>
+        <button onclick="addToCart(0)">Add to Cart</button>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="card">
+        <img src="images/jeans.jpg" alt="Tone Jeans" />
+        <h3>Black Jeans</h3>
+        <p>₹899</p>
+        <button onclick="addToCart(1)">Add to Cart</button>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="card">
+        <img src="images/sneakers.jpg" alt="Sneakers" />
+        <h3>Sneakers</h3>
+        <p>₹1299</p>
+        <button onclick="addToCart(2)">Add to Cart</button>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="card">
+        <img src="images/cap.jpg" alt="Cap" />
+        <h3>Cap</h3>
+        <p>₹299</p>
+        <button onclick="addToCart(3)">Add to Cart</button>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="card">
+        <img src="images/watch.jpg" alt="Watch" />
+        <h3>Watch</h3>
+        <p>₹1999</p>
+        <button onclick="addToCart(4)">Add to Cart</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ⚙️ Footer -->
+  <footer>
+    <p>© 2025 ShopEasy | All Rights Reserved</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // 🛍️ Simple Cart Functionality
+    let cart = [];
+
+    function addToCart(index) {
+      const products = [
+        { name: "Blue Shirt", price: 499 },
+        { name: "Tone Jeans", price: 899 },
+        { name: "Sneakers", price: 1299 },
+        { name: "Cap", price: 299 },
+        { name: "Watch", price: 1999 },
+      ];
+      cart.push(products[index]);
+      document.getElementById("cartCount").textContent = cart.length;
+      alert(`${products[index].name} added to cart!`);
+    }
+
+    // 🔎 Search + Sort (Optional Dynamic)
+    const search = document.getElementById("search");
+    const sort = document.getElementById("sort");
+    const grid = document.getElementById("productGrid");
+
+    search.addEventListener("input", filterProducts);
+    sort.addEventListener("change", filterProducts);
+
+    function filterProducts() {
+      const searchText = search.value.toLowerCase();
+      const sortOption = sort.value;
+      const cards = Array.from(grid.children);
+
+      let sorted = cards.filter(card =>
+        card.querySelector("h3").textContent.toLowerCase().includes(searchText)
+      );
+
+      if (sortOption === "low") {
+        sorted.sort((a, b) =>
+          parseInt(a.querySelector("p").textContent.replace("₹", "")) -
+          parseInt(b.querySelector("p").textContent.replace("₹", ""))
+        );
+      } else if (sortOption === "high") {
+        sorted.sort((a, b) =>
+          parseInt(b.querySelector("p").textContent.replace("₹", "")) -
+          parseInt(a.querySelector("p").textContent.replace("₹", ""))
+        );
+      }
+
+      grid.innerHTML = "";
+      sorted.forEach(card => grid.appendChild(card));
+    }
+  </script>
+</body>
+</html>

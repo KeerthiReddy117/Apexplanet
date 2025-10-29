@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>🛒 Product Listing</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Add this inside or keep in styles.css */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #222;
+    }
+
+    .controls {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      margin: 8px 0;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .card p {
+      font-size: 16px;
+      color: #007b00;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>🛍️ Product Listing</h1>
+
+    <div class="controls">
+      <input id="search" placeholder="Search products..." />
+      <select id="sort">
+        <option value="none">Sort by</option>
+        <option value="low">Price: Low → High</option>
+        <option value="high">Price: High → Low</option>
+      </select>
+    </div>
+
+    <div id="productGrid" class="grid">
+      <!-- Product 1 -->
+      <div class="card">
+        <img src="images/shirt.jpg" alt="Blue Shirt">
+        <h3>Blue Shirt</h3>
+        <p>₹499</p>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="card">
+        <img src="images/jeans.jpg" alt="Tone Jeans">
+        <h3>Black Jeans</h3>
+        <p>₹899</p>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="card">
+        <img src="images/sneakers.jpg" alt="Sneakers">
+        <h3>Sneakers</h3>
+        <p>₹1299</p>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="card">
+        <img src="images/cap.jpg" alt="Cap">
+        <h3>Cap</h3>
+        <p>₹299</p>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="card">
+        <img src="images/watch.jpg" alt="Watch">
+        <h3>Watch</h3>
+        <p>₹1999</p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

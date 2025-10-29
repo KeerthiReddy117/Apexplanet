@@ -1,0 +1,41 @@
+* { box-sizing: border-box; }
+
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  background: #f5f8fa;
+}
+
+header, footer {
+  background: #0078d7;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* 📱 mobile: 1 column */
+.grid { grid-template-columns: 1fr; }
+
+/* 💻 tablet: 2 columns */
+@media (min-width: 600px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* 🖥️ desktop: 3 columns */
+@media (min-width: 992px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
